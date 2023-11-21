@@ -50,30 +50,11 @@ public class BotHardware {
     }
 
     /**
-     * Calculates the left/right motor powers required to achieve the requested
-     * robot motions: Drive (Axial motion) and Turn (Yaw motion).
-     * Then sends these power levels to the motors.
-     *
-     * @param y     Fwd/Rev driving power (-1.0 to 1.0) +ve is forward
-     * @param Turn      Right/Left turning power (-1.0 to 1.0) +ve is CW
-     */
-    public void driveRobotMecanum(double y, double x, double rx) {
-        double denominator = Math.max(Math.abs(y) + Math.abs(x) + Math.abs(rx), 1);
-
-        double frontLeftPower = (y + x + rx) / denominator;
-        double backLeftPower = (y - x + rx) / denominator;
-        double frontRightPower = (y - x - rx) / denominator;
-        double backRightPower = (y + x - rx) / denominator;
-
-        // Use existing function to drive both wheels.
-        setDrivePower(backLeftPower, backRightPower, frontRightPower, frontLeftPower);
-    }
-
-    /**
-     * Pass the requested wheel motor powers to the appropriate hardware drive motors.
-     *
-     * @param leftRearWheel     Fwd/Rev driving power (-1.0 to 1.0) +ve is forward
-     * @param rightRearWheel    Fwd/Rev driving power (-1.0 to 1.0) +ve is forward
+     *  Pass the requested wheel motor powers to the appropriate hardware drive motors.
+     * @param leftRearWheel left rear wheel power
+     * @param rightRearWheel right rear wheel power
+     * @param rightFrontWheel right front wheel power
+     * @param leftFrontWheel left front wheel power
      */
     public void setDrivePower(double leftRearWheel, double rightRearWheel, double rightFrontWheel, double leftFrontWheel) {
         // Output the values to the motor drives.
