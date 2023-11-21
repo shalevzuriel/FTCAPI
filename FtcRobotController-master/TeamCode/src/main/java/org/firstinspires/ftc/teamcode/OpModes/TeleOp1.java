@@ -23,7 +23,7 @@ public class TeleOp1 extends LinearOpMode {
 
             //TODO Put the values from the controller into the relevant methods
 
-            //TODO update telemetry
+            //TODO update telemetrygit 
         }
     }
 }
