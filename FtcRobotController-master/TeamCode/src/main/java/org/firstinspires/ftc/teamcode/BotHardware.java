@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 public class BotHardware {
 
 
+    private static BotHardware instance;
     private LinearOpMode myOpMode = null;   // gain access to methods in the calling OpMode.
 
     // Define Motor and Servo objects  (Make them private so they can't be accessed externally)
@@ -13,11 +14,20 @@ public class BotHardware {
     private DcMotor rightRearDrive  = null;
     private DcMotor leftFrontDrive = null;
     private DcMotor rightFrontDrive = null;
+    private boolean isInitCalled = false;
 
 
     // Define a constructor that allows the OpMode to pass a reference to itself.
-    public BotHardware(LinearOpMode opmode) {
-        myOpMode = opmode;
+    private BotHardware() {
+    }
+
+    // Public static method to get the single instance of the class
+    public static BotHardware getInstance() {
+        // create the instance only if it's null
+        if (instance == null) {
+            instance = new BotHardware();
+        }
+        return instance;
     }
 
     /**
@@ -26,27 +36,30 @@ public class BotHardware {
      * <p>
      * All of the hardware devices are accessed via the hardware map, and initialized.
      */
-    public void init()    {
-        // Define and Initialize Motors (note: need to use reference to actual OpMode).
-        leftRearDrive = myOpMode.hardwareMap.get(DcMotor.class, "left_drive_rear");
-        rightRearDrive = myOpMode.hardwareMap.get(DcMotor.class, "right_drive_rear");
-        leftFrontDrive = myOpMode.hardwareMap.get(DcMotor.class, "left_drive_front");
-        rightFrontDrive = myOpMode.hardwareMap.get(DcMotor.class, "right_drive_front");
+    public void init(LinearOpMode myOpMode)    {
+        if (!isInitCalled) {
+            // Define and Initialize Motors (note: need to use reference to actual OpMode).
+            leftRearDrive = myOpMode.hardwareMap.get(DcMotor.class, "left_drive_rear");
+            rightRearDrive = myOpMode.hardwareMap.get(DcMotor.class, "right_drive_rear");
+            leftFrontDrive = myOpMode.hardwareMap.get(DcMotor.class, "left_drive_front");
+            rightFrontDrive = myOpMode.hardwareMap.get(DcMotor.class, "right_drive_front");
 
-        // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
-        // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
-        // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
-        leftRearDrive.setDirection(DcMotor.Direction.REVERSE);
-        leftFrontDrive.setDirection(DcMotor.Direction.REVERSE);
+            // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
+            // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
+            // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
+            leftRearDrive.setDirection(DcMotor.Direction.REVERSE);
+            leftFrontDrive.setDirection(DcMotor.Direction.REVERSE);
 
-        // If there are encoders connected, switch to RUN_USING_ENCODER mode for greater accuracy
-        // leftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        // rightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            // If there are encoders connected, switch to RUN_USING_ENCODER mode for greater accuracy
+            // leftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+            // rightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        // Define and initialize ALL installed servos.
+            // Define and initialize ALL installed servos.
 
-        myOpMode.telemetry.addData(">", "Hardware Initialized");
-        myOpMode.telemetry.update();
+            myOpMode.telemetry.addData(">", "Hardware Initialized");
+            myOpMode.telemetry.update();
+            isInitCalled = true;
+        }
     }
 
     /**
