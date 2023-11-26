@@ -14,6 +14,7 @@ public class BotHardware {
     private DcMotor rightRearDrive  = null;
     private DcMotor leftFrontDrive = null;
     private DcMotor rightFrontDrive = null;
+    private DcMotor armMotor = null;
     private boolean isInitCalled = false;
 
 
@@ -75,5 +76,10 @@ public class BotHardware {
         rightRearDrive.setPower(rightRearWheel);
         leftFrontDrive.setPower(leftFrontWheel);
         rightFrontDrive.setPower(rightFrontWheel);
+    }
+
+    public void setArmPower(double armPower)
+    {
+        armMotor.setPower(armPower);
     }
 }
