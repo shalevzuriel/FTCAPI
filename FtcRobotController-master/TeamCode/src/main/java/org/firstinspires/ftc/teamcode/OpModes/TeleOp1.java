@@ -9,12 +9,12 @@ import org.firstinspires.ftc.teamcode.BotHardware;
 @TeleOp
 public class TeleOp1 extends LinearOpMode {
 
-    BotHardware botHardware = new BotHardware(this);
+    BotHardware botHardware = BotHardware.getInstance();
 
     @Override
     public void runOpMode() throws InterruptedException
     {
-        botHardware.init();
+        botHardware.init(this);
 
         waitForStart();
         while (opModeIsActive())
