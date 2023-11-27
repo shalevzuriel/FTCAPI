@@ -1,5 +1,8 @@
 package org.firstinspires.ftc.teamcode;
-/* ofek the king */
+
+import com.qualcomm.hardware.rev.Rev2mDistanceSensor;
+import com.qualcomm.hardware.rev.RevColorSensorV3;
+import com.qualcomm.hardware.rev.RevTouchSensor;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
@@ -15,6 +18,12 @@ public class BotHardware {
     private DcMotor leftFrontDrive = null;
     private DcMotor rightFrontDrive = null;
     private DcMotor armMotor = null;
+
+    // Define Sensors. Notice they are REVROBOTICS sensors.
+    private Rev2mDistanceSensor mDistanceSensor = null;
+    private RevColorSensorV3 colorSensor = null;
+    private RevTouchSensor touchSensor =null;
+
     private boolean isInitCalled = false;
 
 
