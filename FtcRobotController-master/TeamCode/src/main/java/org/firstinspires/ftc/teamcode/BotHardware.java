@@ -15,7 +15,6 @@ public class BotHardware {
     private DcMotor leftFrontDrive = null;
     private DcMotor rightFrontDrive = null;
     private DcMotor armMotor = null;
-    private boolean isInitCalled = false;
 
 
     // Define a constructor that allows the OpMode to pass a reference to itself.
@@ -38,12 +37,12 @@ public class BotHardware {
      * All of the hardware devices are accessed via the hardware map, and initialized.
      */
     public void init(LinearOpMode myOpMode)    {
-        if (!isInitCalled) {
             // Define and Initialize Motors (note: need to use reference to actual OpMode).
             leftRearDrive = myOpMode.hardwareMap.get(DcMotor.class, "left_drive_rear");
             rightRearDrive = myOpMode.hardwareMap.get(DcMotor.class, "right_drive_rear");
             leftFrontDrive = myOpMode.hardwareMap.get(DcMotor.class, "left_drive_front");
             rightFrontDrive = myOpMode.hardwareMap.get(DcMotor.class, "right_drive_front");
+
 
             // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
             // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
@@ -59,8 +58,6 @@ public class BotHardware {
 
             myOpMode.telemetry.addData(">", "Hardware Initialized");
             myOpMode.telemetry.update();
-            isInitCalled = true;
-        }
     }
 
     /**
