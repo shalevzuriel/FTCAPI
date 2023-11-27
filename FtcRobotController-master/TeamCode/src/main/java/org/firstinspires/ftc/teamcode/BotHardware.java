@@ -5,6 +5,7 @@ import com.qualcomm.hardware.rev.RevColorSensorV3;
 import com.qualcomm.hardware.rev.RevTouchSensor;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.IMU;
 
 public class BotHardware {
 
@@ -23,6 +24,7 @@ public class BotHardware {
     private Rev2mDistanceSensor mDistanceSensor = null;
     private RevColorSensorV3 colorSensor = null;
     private RevTouchSensor touchSensor =null;
+    private IMU imu = null;
 
     private boolean isInitCalled = false;
 
@@ -53,6 +55,11 @@ public class BotHardware {
             rightRearDrive = myOpMode.hardwareMap.get(DcMotor.class, "right_drive_rear");
             leftFrontDrive = myOpMode.hardwareMap.get(DcMotor.class, "left_drive_front");
             rightFrontDrive = myOpMode.hardwareMap.get(DcMotor.class, "right_drive_front");
+            //define and Initialize Sensors
+            mDistanceSensor = myOpMode.hardwareMap.get(Rev2mDistanceSensor.class, "distance_sensor");
+            colorSensor = myOpMode.hardwareMap.get(RevColorSensorV3.class, "color_sensor");
+            touchSensor = myOpMode.hardwareMap.get(RevTouchSensor.class, "touch_sensor");
+            imu = myOpMode.hardwareMap.get(IMU.class, "imu");
 
             // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
             // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
@@ -91,4 +98,9 @@ public class BotHardware {
     {
         armMotor.setPower(armPower);
     }
+    //Getter methods for sensors
+    public Rev2mDistanceSensor get2mDistanceSensor(){return mDistanceSensor;}
+    public RevColorSensorV3 getColorSensor(){return colorSensor;}
+    public RevTouchSensor getTouchSensor() {return touchSensor;}
+    public IMU getIMU(){return imu;}
 }
