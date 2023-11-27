@@ -36,9 +36,9 @@ public class BotHardware {
     private BotHardware() {
     }
 
-   
+
     /**
-    * method to create/get the singleton instance of BotHardware. 
+    * method to create/get the singleton instance of BotHardware.
     * if the instance wasn't constructed- a new one will be constructed using the private constructor and then returned.
     * if there is an instance - the method will only return the existing instance.
     * @return the BotHardware singleton instance.
@@ -58,7 +58,7 @@ public class BotHardware {
      * All of the hardware devices are accessed via the hardware map, and initialized.
      */
     public void init(LinearOpMode myOpMode)    {
-      
+
         // Define and Initialize Motors (note: need to use reference to actual OpMode).
         leftRearDrive = myOpMode.hardwareMap.get(DcMotor.class, "left_drive_rear"); //port 1
         rightRearDrive = myOpMode.hardwareMap.get(DcMotor.class, "right_drive_rear"); //port 3
@@ -67,11 +67,11 @@ public class BotHardware {
         pixelEntranceMotor = myOpMode.hardwareMap.get(DcMotor.class, "pixel_entrance");
         armMotor = myOpMode.hardwareMap.get(DcMotor.class, "arm_motor");
         //define and Initialize Sensors
-        
+
         mDistanceSensor = myOpMode.hardwareMap.get(Rev2mDistanceSensor.class, "distance_sensor");
         colorSensor = myOpMode.hardwareMap.get(RevColorSensorV3.class, "color_sensor");
         touchSensor = myOpMode.hardwareMap.get(RevTouchSensor.class, "touch_sensor");
-         
+
         //setting the logo facing directions as back and the usb facing directions as left (just as it is connected to the robot).
         RevHubOrientationOnRobot.LogoFacingDirection logoDirection = RevHubOrientationOnRobot.LogoFacingDirection.BACKWARD;
         RevHubOrientationOnRobot.UsbFacingDirection  usbDirection  = RevHubOrientationOnRobot.UsbFacingDirection.LEFT;
@@ -112,8 +112,8 @@ public class BotHardware {
         leftFrontDrive.setPower(leftFrontWheel);
         rightFrontDrive.setPower(rightFrontWheel);
     }
-  
-    
+
+
     /**
     * Method to set power for the arm motor
     * @param armPower the power value for the arm motor. value between -1 and 1.
@@ -122,42 +122,42 @@ public class BotHardware {
     {
         armMotor.setPower(armPower);
     }
-  
+
     //Getter methods for sensors
-  
-    /** 
+
+    /**
     * Getter method for distance sensor.
     *@return distance sensor
     */
     public Rev2mDistanceSensor get2mDistanceSensor(){
       return mDistanceSensor;
     }
-  
-    /** 
+
+    /**
     * Getter method for color sensor.
     *@return color sensor
     */
     public RevColorSensorV3 getColorSensor(){
       return colorSensor;
     }
-  
-    /** 
+
+    /**
     * Getter method for touch sensor.
     *@return touch sensor
     */
     public RevTouchSensor getTouchSensor() {
       return touchSensor;
     }
-  
-    /** 
+
+    /**
     * Getter method for IMU.
     *@return IMU
     */
     public IMU getIMU(){
       return imu;
     }
-    
-    /** 
+
+    /**
     * Getter method for pixel entrance mecanism motor.
     *@return pixel entrance mecanism motor
     */
