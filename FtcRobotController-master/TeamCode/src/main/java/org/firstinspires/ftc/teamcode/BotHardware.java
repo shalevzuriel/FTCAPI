@@ -1,11 +1,18 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.hardware.bosch.BNO055IMU;
+import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.hardware.rev.Rev2mDistanceSensor;
 import com.qualcomm.hardware.rev.RevColorSensorV3;
 import com.qualcomm.hardware.rev.RevTouchSensor;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.IMU;
+import com.qualcomm.robotcore.hardware.IMU;
+
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 
 public class BotHardware {
 
@@ -24,7 +31,7 @@ public class BotHardware {
     private Rev2mDistanceSensor mDistanceSensor = null;
     private RevColorSensorV3 colorSensor = null;
     private RevTouchSensor touchSensor =null;
-    private IMU imu = null;
+    private BNO055IMU imu = null;
 
     private boolean isInitCalled = false;
 
@@ -59,8 +66,19 @@ public class BotHardware {
             mDistanceSensor = myOpMode.hardwareMap.get(Rev2mDistanceSensor.class, "distance_sensor");
             colorSensor = myOpMode.hardwareMap.get(RevColorSensorV3.class, "color_sensor");
             touchSensor = myOpMode.hardwareMap.get(RevTouchSensor.class, "touch_sensor");
-            imu = myOpMode.hardwareMap.get(IMU.class, "imu");
+            imu = myOpMode.hardwareMap.get(BNO055IMU.class, "imu");
 
+            // setting of the units of measurements for angles
+            BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
+            parameters.angleUnit =  BNO055IMU.AngleUnit.DEGREES;
+            parameters.accelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
+            parameters.calibrationDataFile = "BNO055IMUCalibration.json";
+            parameters.loggingEnabled = true;
+            parameters.loggingTag = "IMU";
+            parameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
+
+            //initializing the imu with parameters
+            imu.initialize(parameters);
             // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
             // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
             // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
@@ -102,5 +120,5 @@ public class BotHardware {
     public Rev2mDistanceSensor get2mDistanceSensor(){return mDistanceSensor;}
     public RevColorSensorV3 getColorSensor(){return colorSensor;}
     public RevTouchSensor getTouchSensor() {return touchSensor;}
-    public IMU getIMU(){return imu;}
+    public BNO055IMU getIMU(){return imu;}
 }
