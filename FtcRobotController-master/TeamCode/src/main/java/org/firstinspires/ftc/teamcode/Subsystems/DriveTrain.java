@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.Subsystems;
 import org.firstinspires.ftc.teamcode.BotHardware;
 
 public class DriveTrain {
-    BotHardware BH = BotHardware.getInstance();
+    BotHardware botHardware = BotHardware.getInstance();
     /**
      * robotCentricDrive will set the robots motors to the right power to create a movement vector
      * based on the parameters you give it
@@ -23,6 +23,52 @@ public class DriveTrain {
         double leftRearWheel =  (y - x + t) / denominator;
         double rightFrontWheel = (y - x - t) / denominator;
         double rightRearWheel = (y + x - t) / denominator;
-        BH.setDrivePower(leftRearWheel, rightRearWheel, rightFrontWheel, leftFrontWheel);
-    }
+        botHardware.setDrivePower(leftRearWheel, rightRearWheel, rightFrontWheel, leftFrontWheel);
+
+    //TODO: method to move the robot by mecanum wheels robot-centeric. meaning, a method which it's parameters are turn, forward and side. by those parameters the robot will move.
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
