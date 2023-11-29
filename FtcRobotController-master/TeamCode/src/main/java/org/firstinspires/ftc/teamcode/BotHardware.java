@@ -1,8 +1,5 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.hardware.bosch.BHI260IMU;
-import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
-
 import com.qualcomm.hardware.rev.Rev2mDistanceSensor;
 import com.qualcomm.hardware.rev.RevColorSensorV3;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
@@ -73,6 +70,7 @@ public class BotHardware {
         mDistanceSensor = myOpMode.hardwareMap.get(Rev2mDistanceSensor.class, "distance_sensor");
         colorSensor = myOpMode.hardwareMap.get(RevColorSensorV3.class, "color_sensor");
         touchSensor = myOpMode.hardwareMap.get(RevTouchSensor.class, "touch_sensor");
+
 
         //setting the logo facing directions as back and the usb facing directions as left (just as it is connected to the robot).
         RevHubOrientationOnRobot.LogoFacingDirection logoDirection = RevHubOrientationOnRobot.LogoFacingDirection.BACKWARD;
