@@ -4,7 +4,9 @@ package org.firstinspires.ftc.teamcode.OpModes;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+
 import org.firstinspires.ftc.teamcode.BotHardware;
+
 
 @TeleOp
 public class TeleOp1 extends LinearOpMode {
@@ -26,8 +28,10 @@ public class TeleOp1 extends LinearOpMode {
             float rightStickY = gamepad1.right_stick_y;
 
             //TODO Put the values from the controller into the relevant methods
-            
+
             //TODO update telemetrygit 
+
+
         }
     }
 }
