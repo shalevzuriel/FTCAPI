@@ -65,6 +65,7 @@ public class BotHardware {
         leftFrontDrive = myOpMode.hardwareMap.get(DcMotor.class, "left_drive_front"); //port 0
         rightFrontDrive = myOpMode.hardwareMap.get(DcMotor.class, "right_drive_front"); //port 2
         pixelEntranceMotor = myOpMode.hardwareMap.get(DcMotor.class, "pixel_entrance");
+        armMotor = myOpMode.hardwareMap.get(DcMotor.class, "arm_motor");
         //define and Initialize Sensors
         
         mDistanceSensor = myOpMode.hardwareMap.get(Rev2mDistanceSensor.class, "distance_sensor");
