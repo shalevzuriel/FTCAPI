@@ -25,12 +25,7 @@ public class TeleOp1 extends LinearOpMode {
         waitForStart();
         while (opModeIsActive())
         {
-            //TODO Get values from controller that are necessary either for driving or moving the arm
-            telemetry.addData("x", botHardware.getIMU().getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES));
-            telemetry.update();
-            //TODO Put the values from the controller into the relevant methods
-
-            //TODO update telemetrygit
+            
 
         }
     }
