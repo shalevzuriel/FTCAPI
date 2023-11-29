@@ -129,7 +129,7 @@ public class BotHardware {
     *@return distance sensor
     */
     public Rev2mDistanceSensor get2mDistanceSensor(){
-      return 2mDistanceSensor;
+      return mDistanceSensor;
     }
   
     /** 
