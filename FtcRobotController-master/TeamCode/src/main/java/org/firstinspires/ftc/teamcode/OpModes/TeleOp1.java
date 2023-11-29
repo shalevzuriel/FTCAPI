@@ -4,8 +4,10 @@ package org.firstinspires.ftc.teamcode.OpModes;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+
 import org.firstinspires.ftc.teamcode.BotHardware;
 import org.firstinspires.ftc.teamcode.Subsystems.DriveTrain;
+
 
 @TeleOp
 public class TeleOp1 extends LinearOpMode {
@@ -29,8 +31,10 @@ public class TeleOp1 extends LinearOpMode {
             DriveTrain.spaceCentricMoving(leftStickX,leftStickY, rightStickX, 0);
             botHardware.setDrivePower(0,0,0,0);
             //TODO Put the values from the controller into the relevant methods
-            
+
             //TODO update telemetrygit 
+
+
         }
     }
 }
