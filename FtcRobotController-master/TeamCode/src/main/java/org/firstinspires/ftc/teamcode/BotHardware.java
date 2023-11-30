@@ -1,7 +1,5 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.hardware.bosch.BHI260IMU;
-import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.hardware.rev.Rev2mDistanceSensor;
 import com.qualcomm.hardware.rev.RevColorSensorV3;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
@@ -38,11 +36,11 @@ public class BotHardware {
 
 
     /**
-    * method to create/get the singleton instance of BotHardware.
-    * if the instance wasn't constructed- a new one will be constructed using the private constructor and then returned.
-    * if there is an instance - the method will only return the existing instance.
-    * @return the BotHardware singleton instance.
-    */
+     * method to create/get the singleton instance of BotHardware.
+     * if the instance wasn't constructed- a new one will be constructed using the private constructor and then returned.
+     * if there is an instance - the method will only return the existing instance.
+     * @return the BotHardware singleton instance.
+     */
     public static BotHardware getInstance() {
         // create the instance only if it's null
         if (instance == null) {
@@ -64,6 +62,7 @@ public class BotHardware {
         rightRearDrive = myOpMode.hardwareMap.get(DcMotor.class, "right_drive_rear"); //port 3
         leftFrontDrive = myOpMode.hardwareMap.get(DcMotor.class, "left_drive_front"); //port 0
         rightFrontDrive = myOpMode.hardwareMap.get(DcMotor.class, "right_drive_front"); //port 2
+
         pixelEntranceMotor = myOpMode.hardwareMap.get(DcMotor.class, "pixel_entrance");
         armMotor = myOpMode.hardwareMap.get(DcMotor.class, "arm_motor");
         //define and Initialize Sensors
@@ -71,6 +70,7 @@ public class BotHardware {
         mDistanceSensor = myOpMode.hardwareMap.get(Rev2mDistanceSensor.class, "distance_sensor");
         colorSensor = myOpMode.hardwareMap.get(RevColorSensorV3.class, "color_sensor");
         touchSensor = myOpMode.hardwareMap.get(RevTouchSensor.class, "touch_sensor");
+
 
         //setting the logo facing directions as back and the usb facing directions as left (just as it is connected to the robot).
         RevHubOrientationOnRobot.LogoFacingDirection logoDirection = RevHubOrientationOnRobot.LogoFacingDirection.BACKWARD;
@@ -82,6 +82,7 @@ public class BotHardware {
         imu = myOpMode.hardwareMap.get(IMU.class, "imu");
         imu.initialize(new IMU.Parameters(orientationOnRobot));
         imu.resetYaw();
+
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
         // Note: The settings here assume direct drive on left and right wheels.  Gear Reduction or 90 Deg drives may require direction flips
@@ -115,9 +116,9 @@ public class BotHardware {
 
 
     /**
-    * Method to set power for the arm motor
-    * @param armPower the power value for the arm motor. value between -1 and 1.
-    */
+     * Method to set power for the arm motor
+     * @param armPower the power value for the arm motor. value between -1 and 1.
+     */
     public void setArmPower(double armPower)
     {
         armMotor.setPower(armPower);
@@ -126,41 +127,41 @@ public class BotHardware {
     //Getter methods for sensors
 
     /**
-    * Getter method for distance sensor.
-    *@return distance sensor
-    */
+     * Getter method for distance sensor.
+     *@return distance sensor
+     */
     public Rev2mDistanceSensor get2mDistanceSensor(){
-      return mDistanceSensor;
+        return mDistanceSensor;
     }
 
     /**
-    * Getter method for color sensor.
-    *@return color sensor
-    */
+     * Getter method for color sensor.
+     *@return color sensor
+     */
     public RevColorSensorV3 getColorSensor(){
-      return colorSensor;
+        return colorSensor;
     }
 
     /**
-    * Getter method for touch sensor.
-    *@return touch sensor
-    */
+     * Getter method for touch sensor.
+     *@return touch sensor
+     */
     public RevTouchSensor getTouchSensor() {
-      return touchSensor;
+        return touchSensor;
     }
 
     /**
-    * Getter method for IMU.
-    *@return IMU
-    */
+     * Getter method for IMU.
+     *@return IMU
+     */
     public IMU getIMU(){
-      return imu;
+        return imu;
     }
 
     /**
-    * Getter method for pixel entrance mecanism motor.
-    *@return pixel entrance mecanism motor
-    */
+     * Getter method for pixel entrance mecanism motor.
+     *@return pixel entrance mecanism motor
+     */
     public DcMotor getPixelEntranceMotor(){
         return pixelEntranceMotor;
     }
