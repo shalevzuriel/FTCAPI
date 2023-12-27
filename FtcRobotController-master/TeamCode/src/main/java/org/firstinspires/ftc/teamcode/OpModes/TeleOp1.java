@@ -9,7 +9,6 @@ import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.teamcode.BotHardware;
 import org.firstinspires.ftc.teamcode.Subsystems.DriveTrain;
 
-
 @TeleOp
 public class TeleOp1 extends LinearOpMode {
 
@@ -40,12 +39,13 @@ public class TeleOp1 extends LinearOpMode {
 
             DriveTrain.spaceCentricMoving(leftStickX,leftStickY, rightStickX, IMUAngleRads); //Print
             telemetry.addData("Angle", Math.toDegrees(IMUAngleRads)); //Prints out the angle.
+            telemetry.addData("Red", botHardware.getColorSensor().red());
+            telemetry.addData("Blue", botHardware.getColorSensor().blue());
+            telemetry.addData("Green", botHardware.getColorSensor().green());
             telemetry.update();
             //TODO Put the values from the controller into the relevant methods
 
-            //TODO update telemetrygit 
-
-
+            //TODO update telemetrygit
         }
     }
 }

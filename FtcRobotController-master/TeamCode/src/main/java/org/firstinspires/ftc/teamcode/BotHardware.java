@@ -12,6 +12,7 @@ public class BotHardware {
 
 
     private static BotHardware instance;
+
     private LinearOpMode myOpMode = null;   // gain access to methods in the calling OpMode.
 
     // Define Motor and Servo objects  (Make them private so they can't be accessed externally)
@@ -19,6 +20,7 @@ public class BotHardware {
     private DcMotor rightRearDrive  = null;
     private DcMotor leftFrontDrive = null;
     private DcMotor rightFrontDrive = null;
+
     private DcMotor armMotor = null;
 
     private DcMotor pixelEntranceMotor = null;
