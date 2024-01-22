@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.hardware.motors.RevRoboticsCoreHexMotor;
 import com.qualcomm.hardware.rev.Rev2mDistanceSensor;
 import com.qualcomm.hardware.rev.RevColorSensorV3;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
@@ -21,16 +22,16 @@ public class BotHardware {
     private DcMotor leftFrontDrive = null;
     private DcMotor rightFrontDrive = null;
 
-    private DcMotor armMotor = null;
+    //private DcMotor armMotor = null;TODO
 
-    private DcMotor pixelEntranceMotor = null;
 
     // Define Sensors. Notice they are REVROBOTICS sensors.
-    private Rev2mDistanceSensor mDistanceSensor = null;
+    /**private Rev2mDistanceSensor mDistanceSensor = null;
     private RevColorSensorV3 colorSensor = null;
-    private RevTouchSensor touchSensor =null;
+    private RevTouchSensor touchSensor =null;*///TODO
     private IMU imu;
 
+    private DcMotor pixelMotor = null;
 
     // Define a constructor that allows the OpMode to pass a reference to itself.
     private BotHardware() {
@@ -65,13 +66,16 @@ public class BotHardware {
         leftFrontDrive = myOpMode.hardwareMap.get(DcMotor.class, "left_drive_front"); //port 0
         rightFrontDrive = myOpMode.hardwareMap.get(DcMotor.class, "right_drive_front"); //port 2
 
-        pixelEntranceMotor = myOpMode.hardwareMap.get(DcMotor.class, "pixel_entrance");
-        armMotor = myOpMode.hardwareMap.get(DcMotor.class, "arm_motor");
-        //define and Initialize Sensors
+        pixelMotor = myOpMode.hardwareMap.get(DcMotor.class, "pixelMotor");
 
+        //armMotor = myOpMode.hardwareMap.get(DcMotor.class, "arm_motor");TODO
+        //define and Initialize Sensors
+/**
         mDistanceSensor = myOpMode.hardwareMap.get(Rev2mDistanceSensor.class, "distance_sensor");
         colorSensor = myOpMode.hardwareMap.get(RevColorSensorV3.class, "color_sensor");
-        touchSensor = myOpMode.hardwareMap.get(RevTouchSensor.class, "touch_sensor");
+        touchSensor = myOpMode.hardwareMap.get(RevTouchSensor.class, "touch_sensor");*///TODO
+
+
 
 
         //setting the logo facing directions as back and the usb facing directions as left (just as it is connected to the robot).
@@ -117,40 +121,6 @@ public class BotHardware {
     }
 
 
-    /**
-    * Method to set power for the arm motor
-    * @param armPower the power value for the arm motor. value between -1 and 1.
-    */
-    public void setArmPower(double armPower)
-    {
-        armMotor.setPower(armPower);
-    }
-
-    //Getter methods for sensors
-
-    /**
-    * Getter method for distance sensor.
-    *@return distance sensor
-    */
-    public Rev2mDistanceSensor get2mDistanceSensor(){
-      return mDistanceSensor;
-    }
-
-    /**
-    * Getter method for color sensor.
-    *@return color sensor
-    */
-    public RevColorSensorV3 getColorSensor(){
-      return colorSensor;
-    }
-
-    /**
-    * Getter method for touch sensor.
-    *@return touch sensor
-    */
-    public RevTouchSensor getTouchSensor() {
-      return touchSensor;
-    }
 
     /**
     * Getter method for IMU.
@@ -165,7 +135,7 @@ public class BotHardware {
     *@return pixel entrance mecanism motor
     */
     public DcMotor getPixelEntranceMotor(){
-        return pixelEntranceMotor;
+        return pixelMotor;
     }
 }
 
