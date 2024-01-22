@@ -11,7 +11,7 @@ public class PixelEntrance {
      */
     public static void pixelMotorOn (boolean state) {
         if(state) {
-            botHardware.getPixelEntranceMotor().setPower(0.9);
+            botHardware.getPixelEntranceMotor().setPower(1);
         }
         else {
             botHardware.getPixelEntranceMotor().setPower(0);

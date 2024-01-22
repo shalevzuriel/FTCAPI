@@ -1,9 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.hardware.rev.Rev2mDistanceSensor;
-import com.qualcomm.hardware.rev.RevColorSensorV3;
 import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
-import com.qualcomm.hardware.rev.RevTouchSensor;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.IMU;
@@ -26,9 +23,6 @@ public class BotHardware {
     private DcMotor pixelEntranceMotor = null;
 
     // Define Sensors. Notice they are REVROBOTICS sensors.
-    private Rev2mDistanceSensor mDistanceSensor = null;
-    private RevColorSensorV3 colorSensor = null;
-    private RevTouchSensor touchSensor =null;
     private IMU imu;
 
 
@@ -68,11 +62,6 @@ public class BotHardware {
         pixelEntranceMotor = myOpMode.hardwareMap.get(DcMotor.class, "pixel_entrance");
         armMotor = myOpMode.hardwareMap.get(DcMotor.class, "arm_motor");
         //define and Initialize Sensors
-
-        mDistanceSensor = myOpMode.hardwareMap.get(Rev2mDistanceSensor.class, "distance_sensor");
-        colorSensor = myOpMode.hardwareMap.get(RevColorSensorV3.class, "color_sensor");
-        touchSensor = myOpMode.hardwareMap.get(RevTouchSensor.class, "touch_sensor");
-
 
         //setting the logo facing directions as back and the usb facing directions as left (just as it is connected to the robot).
         RevHubOrientationOnRobot.LogoFacingDirection logoDirection = RevHubOrientationOnRobot.LogoFacingDirection.BACKWARD;
@@ -124,32 +113,6 @@ public class BotHardware {
     public void setArmPower(double armPower)
     {
         armMotor.setPower(armPower);
-    }
-
-    //Getter methods for sensors
-
-    /**
-     * Getter method for distance sensor.
-     *@return distance sensor
-     */
-    public Rev2mDistanceSensor get2mDistanceSensor(){
-        return mDistanceSensor;
-    }
-
-    /**
-     * Getter method for color sensor.
-     *@return color sensor
-     */
-    public RevColorSensorV3 getColorSensor(){
-        return colorSensor;
-    }
-
-    /**
-     * Getter method for touch sensor.
-     *@return touch sensor
-     */
-    public RevTouchSensor getTouchSensor() {
-        return touchSensor;
     }
 
     /**
