@@ -18,7 +18,7 @@ public class BotHardware {
     private DcMotor leftFrontDrive = null;
     private DcMotor rightFrontDrive = null;
 
-    private DcMotor armMotor = null;
+    //private DcMotor armMotor = null;TODO
 
     private DcMotor pixelEntranceMotor = null;
 
@@ -60,7 +60,7 @@ public class BotHardware {
         rightFrontDrive = myOpMode.hardwareMap.get(DcMotor.class, "right_drive_front"); //port 2
 
         pixelEntranceMotor = myOpMode.hardwareMap.get(DcMotor.class, "pixel_entrance");
-        armMotor = myOpMode.hardwareMap.get(DcMotor.class, "arm_motor");
+        //armMotor = myOpMode.hardwareMap.get(DcMotor.class, "arm_motor");TODO
         //define and Initialize Sensors
 
         //setting the logo facing directions as back and the usb facing directions as left (just as it is connected to the robot).
@@ -110,10 +110,10 @@ public class BotHardware {
      * Method to set power for the arm motor
      * @param armPower the power value for the arm motor. value between -1 and 1.
      */
-    public void setArmPower(double armPower)
+    /*public void setArmPower(double armPower)
     {
         armMotor.setPower(armPower);
-    }
+    }*///TODO
 
     /**
      * Getter method for IMU.
