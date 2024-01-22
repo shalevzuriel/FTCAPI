@@ -2,9 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.util.Range;
 
 public class RevBotHardware {
 
@@ -25,17 +23,18 @@ public class RevBotHardware {
 
     // Define Drive constants
 
-    private final double armManualMinimum = 0.03;
+    public final double armManualMinimum = 0.03;
 
-    private final double gripperClosedPosition = 1.0;
-    private final double gripperOpenPosition = 0.5;
-    private final double wristUpPosition = 1.0;
-    private final double wristDownPosition = 0.0;
+    public final double gripperClosedPosition = 1.0;
+    public final double gripperOpenPosition = 0.5;
+    public final double wristUpPosition = 1.0;
+    public final double wristDownPosition = 0.0;
 
-    private final int armHomePosition = 0;
-    private final int armIntakePosition = 10;
-    private final int armScorePosition = 600;
-    private final int armShutdownThreshold = 5;
+    public final int armHomePosition = 0;
+    public final int armGrabPosition = 10;
+    public final int armBackDropPosition = 600;
+    public final int armShutdownThreshold = 5;
+    public boolean isGripperOpen = false;
 
 
     // Define a constructor that allows the OpMode to pass a reference to itself.
@@ -76,6 +75,8 @@ public class RevBotHardware {
         // Initialize all servos
         wrist = myOpMode.hardwareMap.get(Servo.class, "wrist");
         gripper = myOpMode.hardwareMap.get(Servo.class, "gripper");
+
+
 
         // To drive forward, most robots need the motor on one side to be reversed, because the axles point in opposite directions.
         // Pushing the left stick forward MUST make robot go forward. So adjust these two lines based on your first test drive.
@@ -167,6 +168,8 @@ public class RevBotHardware {
     public void setGripper(Servo gripper) {
         this.gripper = gripper;
     }
+
+
 }
 
 
